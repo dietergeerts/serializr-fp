@@ -1,9 +1,12 @@
 import _curry from 'lodash/fp/curry';
+import _flow from 'lodash/fp/flow';
 import _get from 'lodash/fp/get';
 import _isArray from 'lodash/fp/isArray';
+import _isFunction from 'lodash/fp/isFunction';
 import _isPlainObject from 'lodash/fp/isPlainObject';
 import _isUndefined from 'lodash/fp/isUndefined';
 import _map from 'lodash/fp/map';
+import _overEvery from 'lodash/fp/overEvery';
 import _set from 'lodash/fp/set';
 import _transform from 'lodash/fp/transform';
 
@@ -30,14 +33,28 @@ const _transformWithKey = _transform.convert({cap: false});
  */
 
 /**
- * @typedef {function(!ModelSchema, !Object|Object[]): !Object|Object[]
- *          |function(!ModelSchema): function(!Object|Object[]): !Object|Object[]} ModelTransformer
+ * @typedef {function(!ModelSchema|PropertySchema, !Object|Object[]): !Object|Object[]
+ *          |function(!ModelSchema|PropertySchema): function(!Object|Object[]): !Object|Object[]} ModelTransformer
  */
 
 /**
  * @type {symbol}
  */
 export const SKIP = Symbol('SKIP');
+
+/**
+ * @private
+ * @param {!string} property
+ * @returns {function(!Object): !boolean}
+ */
+const isFunctionProperty = property => _flow(_get(property), _isFunction);
+
+/**
+ * @private
+ * @param {!ModelSchema|PropertySchema} schema
+ * @returns {boolean}
+ */
+const isPropertySchema = _overEvery(isFunctionProperty('serialize'), isFunctionProperty('deserialize'));
 
 /**
  * @private
@@ -48,24 +65,33 @@ export const SKIP = Symbol('SKIP');
  */
 const transform = (getSourceProperty, getTransformer, getTargetProperty) => {
 
-    const transformer = _curry((modelSchema, source) => {
+    const transformer = _curry((schema, source) => {
 
-        return _isArray(source)
-            ? _map(transformer(modelSchema), source)
-            : _isPlainObject(source)
-                ? _transformWithKey((target, schema, property) => {
+        if (_isArray(source)) {
+            return _map(transformer(schema), source);
+        }
 
-                    const sourceProperty = getSourceProperty(schema, property);
-                    const sourceValue = _get(sourceProperty, source);
-                    const transformed = getTransformer(schema)(sourceValue, source, sourceProperty);
-                    const targetValue = _isUndefined(transformed) ? null : transformed;
-                    const targetProperty = getTargetProperty(schema, property);
+        if (isPropertySchema(schema)) {
+            return getTransformer(schema)(source);
+        }
 
-                    if (targetValue !== SKIP) {
-                        _setMutable(targetProperty, targetValue, target);
-                    }
-                }, {}, source)
-                : source;
+        if (!_isPlainObject(source)) {
+            return source;
+        }
+
+        return _transformWithKey((target, propertySchema, property) => {
+
+            const sourceProperty = getSourceProperty(propertySchema, property);
+            const sourceValue = _get(sourceProperty, source);
+            const transformed = getTransformer(propertySchema)(sourceValue, source, sourceProperty);
+            const targetValue = _isUndefined(transformed) ? null : transformed;
+            const targetProperty = getTargetProperty(propertySchema, property);
+
+            if (targetValue !== SKIP) {
+                _setMutable(targetProperty, targetValue, target);
+            }
+
+        }, {}, schema);
     });
 
     return transformer;

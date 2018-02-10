@@ -6,7 +6,7 @@ import {deserialize, serialize, SKIP} from "./index";
 /**
  * @type {PropertySchema}
  */
-export const primitive = {
+export const PRIMITIVE = {
     serialize: value => value,
     deserialize: value => value,
 };
@@ -14,16 +14,17 @@ export const primitive = {
 /**
  * @type {PropertySchema}
  */
-export const date = {
+export const DATE = {
     serialize: value => value && value.toISOString(),
     deserialize: value => value && new Date(value),
 };
 
 /**
- * @param {!ModelSchema} schema
+ * @private
+ * @param {!ModelSchema|PropertySchema} schema
  * @returns {!PropertySchema}
  */
-export const object = schema => ({
+const complex = schema => ({
     serialize: serialize(schema),
     deserialize: deserialize(schema),
 });
@@ -32,7 +33,13 @@ export const object = schema => ({
  * @param {!ModelSchema} schema
  * @returns {!PropertySchema}
  */
-export const array = object;
+export const object = complex;
+
+/**
+ * @param {!PropertySchema} schema
+ * @returns {!PropertySchema}
+ */
+export const array = complex;
 
 /**
  * @param {!string} property
