@@ -1,6 +1,5 @@
 import _assign from 'lodash/fp/assign';
 import _flow from 'lodash/fp/flow';
-import _isNil from 'lodash/fp/isNil';
 import _isUndefined from 'lodash/fp/isUndefined';
 import _placeholder from 'lodash/fp/placeholder';
 import _slice from 'lodash/fp/slice';
@@ -31,7 +30,7 @@ export const DATE_ONLY = _assign(DATE, {
 
 /**
  * @private
- * @param {!ModelSchema|PropertySchema} schema
+ * @param {!(ModelSchema|PropertySchema)} schema
  * @returns {!PropertySchema}
  */
 const complex = schema => ({
@@ -97,5 +96,5 @@ export const computed = compute => ({
  */
 export const withDefault = (defaultValue, schema) => ({
     serialize: schema.serialize,
-    deserialize: _flow(schema.deserialize, value => _isNil(value) ? defaultValue : value),
+    deserialize: _flow(schema.deserialize, value => _isUndefined(value) ? defaultValue : value),
 });

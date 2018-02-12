@@ -51,7 +51,7 @@ const isFunctionProperty = property => _flow(_get(property), _isFunction);
 
 /**
  * @private
- * @param {!ModelSchema|PropertySchema} schema
+ * @param {!(ModelSchema|PropertySchema)} schema
  * @returns {boolean}
  */
 const isPropertySchema = _overEvery(isFunctionProperty('serialize'), isFunctionProperty('deserialize'));
