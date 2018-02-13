@@ -1,8 +1,6 @@
 import _assign from 'lodash/fp/assign';
 import _flow from 'lodash/fp/flow';
 import _isUndefined from 'lodash/fp/isUndefined';
-import _placeholder from 'lodash/fp/placeholder';
-import _slice from 'lodash/fp/slice';
 import {deserialize, serialize, SKIP} from "./index";
 
 /**
@@ -17,7 +15,7 @@ export const PRIMITIVE = {
  * @type {PropertySchema}
  */
 export const DATE = {
-    serialize: value => value && value.toISOString(),
+    serialize: value => value && value.toJSON(),
     deserialize: value => value && new Date(value),
 };
 
@@ -25,7 +23,7 @@ export const DATE = {
  * @type {PropertySchema}
  */
 export const DATE_ONLY = _assign(DATE, {
-    serialize: _flow(DATE.serialize, _slice(0, 10)),
+    serialize: _flow(DATE.serialize, date => date && date.slice(0, 10)),
 });
 
 /**
@@ -69,7 +67,7 @@ const skipIfUndefined = value => _isUndefined(value) ? SKIP : value;
  * @param {!PropertyTransformer} transformer
  * @returns {!PropertyTransformer}
  */
-const optionalTransformer = _flow(_placeholder, skipIfUndefined);
+const optionalTransformer = transformer => _flow(transformer, skipIfUndefined);
 
 /**
  * @param {!PropertySchema} schema

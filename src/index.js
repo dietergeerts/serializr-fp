@@ -27,8 +27,8 @@ const _transformWithKey = _transform.convert({cap: false});
 /**
  * @callback PropertyTransformer
  * @param {*} value
- * @param {!Object} source
- * @param {!string} property
+ * @param {!Object} [source]
+ * @param {!string} [property]
  * @returns {*}
  */
 
