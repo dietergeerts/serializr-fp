@@ -4,6 +4,11 @@
   "description": "(De)serialize complex object graphs to/from JSON",
   "main": "dist/serializr-fp.js",
   "module": "src/index.js",
+  "files": [
+    "dist",
+    "src/**/*.js",
+    "!src/**/*.test.js"
+  ],
   "scripts": {
     "build": "rimraf dist && cross-env NODE_ENV=production webpack",
     "test": "cross-env NODE_ENV=test nyc --check-coverage mocha src/**/*.test.js"
