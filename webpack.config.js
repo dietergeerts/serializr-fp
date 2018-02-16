@@ -3,14 +3,13 @@ const webpack = require('webpack');
 const _flow = require('lodash/fp/flow');
 const _omit = require('lodash/fp/omit');
 const config = _flow(require('rc'), _omit(['_', 'config', 'configs']));
-const BabelMinifyWebpackPlugin = require('babel-minify-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: 'serializr-fp',
+        filename: 'serializr-fp.js',
         path: path.resolve(__dirname, 'dist'),
-        library: 'serializrFp',
+        library: 'serializr',
         libraryTarget: 'umd',
     },
     module: {
@@ -28,6 +27,5 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
         }),
-        new BabelMinifyWebpackPlugin(),
     ],
 };
