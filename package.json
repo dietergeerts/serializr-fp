@@ -36,7 +36,6 @@
     "@istanbuljs/nyc-config-babel": "^1.2.3",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
-    "babel-minify-webpack-plugin": "^0.3.0",
     "babel-plugin-istanbul": "^4.1.5",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
