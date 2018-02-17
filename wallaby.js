@@ -5,6 +5,7 @@ module.exports = function (wallaby) {
         files: [
             {pattern: 'src/**/*.js'},
             {pattern: 'src/**/*.test.js', ignore: true},
+            {pattern: 'test/**/*.js'},
         ],
         tests: [
             {pattern: 'src/**/*.test.js'},

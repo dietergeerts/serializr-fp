@@ -3,8 +3,8 @@
   "include": ["src/**/*.js"],
   "all": true,
   "cache": true,
-  "statements": 55,
-  "branches": 25,
-  "functions": 45,
-  "lines": 65
+  "statements": 85,
+  "branches": 70,
+  "functions": 80,
+  "lines": 85
 }
