@@ -5,7 +5,13 @@ import {deserialize, serialize} from "../src/index";
 const _forOwnWithKey = _forOwn.convert({cap: false});
 
 /**
- * @typedef {Object.<string, ModelSchemaTestCase>} ModelSchemaTestCases
+ * @typedef {Object} ModelSchemaTestCases
+ * @property {!ModelSchemaTransformTestCases} serialize
+ * @property {!ModelSchemaTransformTestCases} deserialize
+ */
+
+/**
+ * @typedef {Object.<string, !ModelSchemaTestCase>} ModelSchemaTransformTestCases
  */
 
 /**
@@ -17,7 +23,7 @@ const _forOwnWithKey = _forOwn.convert({cap: false});
 /**
  * @private
  * @param {!function(!Object|Object[]): !Object|Object[]} transform
- * @param {!ModelSchemaTestCases} testCases
+ * @param {!ModelSchemaTransformTestCases} testCases
  * @param {!string} given
  * @param {!string} expect
  * @returns {function(): void}
@@ -34,13 +40,12 @@ function demandAll(transform, testCases, given, expect) {
 /**
  * @param {!string} name
  * @param {!ModelSchema} schema
- * @param {!ModelSchemaTestCases} serializeTestCases
- * @param {!ModelSchemaTestCases} deserializeTestCases
+ * @param {!ModelSchemaTestCases} testCases
  */
-export function describeModelSchema(name, schema, serializeTestCases, deserializeTestCases) {
+export function describeModelSchema(name, schema, testCases) {
 
     describe(name, () => {
-        it(`must serialize`, demandAll(serialize(schema), serializeTestCases, 'object', 'json'));
-        it(`must deserialize`, demandAll(deserialize(schema), deserializeTestCases, 'json', 'object'));
+        it(`must serialize`, demandAll(serialize(schema), testCases.serialize, 'object', 'json'));
+        it(`must deserialize`, demandAll(deserialize(schema), testCases.deserialize, 'json', 'object'));
     });
 }

@@ -16,21 +16,27 @@ describe('deserialize', () => {
     it(`must deserialize`);
 });
 
-describeModelSchema('OPTIONAL_REQUIRED_TEST_SCHEMA', {
-    primitive: PRIMITIVE,
-    optional: optional(PRIMITIVE),
-}, {
-    testCase1: {
-        object: {},
-        json: {primitive: null},
+describeModelSchema(
+    'OPTIONAL_REQUIRED_TEST_SCHEMA',
+    {
+        primitive: PRIMITIVE,
+        optional: optional(PRIMITIVE),
     },
-    testCase2: {
-        object: {primitive: undefined, optional: undefined},
-        json: {primitive: null},
-    },
-}, {
-    testCase1: {
-        json: {},
-        object: {primitive: null},
-    },
-});
+    {
+        serialize: {
+            testCase1: {
+                object: {},
+                json: {primitive: null},
+            },
+            testCase2: {
+                object: {primitive: undefined, optional: undefined},
+                json: {primitive: null},
+            },
+        },
+        deserialize: {
+            testCase1: {
+                json: {},
+                object: {primitive: null},
+            },
+        }
+    });
