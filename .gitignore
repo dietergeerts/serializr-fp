@@ -111,7 +111,3 @@ crashlytics-build.properties
 fabric.properties
 
 /.idea/
-/index.js
-/core.js
-/schemas.js
-/test-utils.js

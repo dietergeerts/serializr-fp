@@ -1,4 +1,4 @@
-import {describeModelSchema} from "../test/test-utils";
+import {describeModelSchema} from "../test";
 import {optional, PRIMITIVE} from "./schemas";
 
 describe('SKIP', () => {

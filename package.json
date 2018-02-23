@@ -2,17 +2,15 @@
   "name": "serializr-fp",
   "version": "0.1.6",
   "description": "(De)serialize complex object graphs to/from JSON",
-  "main": "index.js",
+  "main": "dist/index.js",
   "files": [
-    "core.js",
-    "schemas.js",
-    "test-utils"
+    "dist"
   ],
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production npm run build:src && npm run build:test",
-    "build:src": "babel src --out-dir . --ignore *.test.js",
-    "build:test": "babel test --out-dir .",
+    "build:src": "babel src --out-dir dist --ignore *.test.js",
+    "build:test": "babel test --out-dir dist/test",
     "test": "cross-env NODE_ENV=test npm run test:unit && npm run test:lint",
     "test:unit": "nyc --check-coverage mocha src/**/*.test.js",
     "test:lint": "eslint --ignore-path .gitignore **/*.js",
