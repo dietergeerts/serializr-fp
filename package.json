@@ -3,12 +3,8 @@
   "version": "0.1.6",
   "description": "(De)serialize complex object graphs to/from JSON",
   "main": "dist/index.js",
-  "module": "src/index.js",
   "files": [
-    "dist",
-    "src/**/*.js",
-    "!src/**/*.test.js",
-    "test"
+    "dist"
   ],
   "scripts": {
     "prebuild": "rimraf dist",
