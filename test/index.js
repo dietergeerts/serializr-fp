@@ -1,6 +1,6 @@
 import demand from 'must';
 import _forOwn from 'lodash/fp/forOwn';
-import {deserialize, serialize} from "../src/index";
+import {deserialize, serialize} from "../src/core";
 
 const _forOwnWithKey = _forOwn.convert({cap: false});
 

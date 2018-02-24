@@ -1,7 +1,8 @@
 import _assign from 'lodash/fp/assign';
 import _flow from 'lodash/fp/flow';
 import _isUndefined from 'lodash/fp/isUndefined';
-import {deserialize, serialize, SKIP} from "./index";
+import _overArgs from 'lodash/fp/overArgs';
+import {deserialize, serialize, SKIP} from "./core";
 
 /**
  * @type {PropertySchema}
@@ -88,11 +89,28 @@ export const computed = compute => ({
 });
 
 /**
+ * @private
+ * @param {function(...function): !PropertyTransformer} flow
+ * @returns {function(*, !PropertySchema): !PropertySchema}
+ */
+const withDefaultFlow = flow => (defaultValue, schema) => ({
+    serialize: schema.serialize,
+    deserialize: (value, ...args) => flow(
+        schema.deserialize,
+        value => _isUndefined(value) ? defaultValue : value
+    )(value, ...args),
+});
+
+/**
  * @param {*} defaultValue
  * @param {!PropertySchema} schema
  * @returns {!PropertySchema}
  */
-export const withDefault = (defaultValue, schema) => ({
-    serialize: schema.serialize,
-    deserialize: _flow(schema.deserialize, value => _isUndefined(value) ? defaultValue : value),
-});
+export const withDefault = withDefaultFlow(_flow);
+
+/**
+ * @param {*} defaultValue
+ * @param {!PropertySchema} schema
+ * @returns {!PropertySchema}
+ */
+export const withJsonDefault = withDefaultFlow(_overArgs);

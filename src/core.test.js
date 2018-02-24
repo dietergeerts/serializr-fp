@@ -1,3 +1,4 @@
+import './../test/setup';
 import {describeModelSchema} from "../test";
 import {optional, PRIMITIVE} from "./schemas";
 
