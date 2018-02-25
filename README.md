@@ -75,6 +75,8 @@ export const serializePatient = serialize(PATIENT_SCHEMA);
 
 All contributions welcome
 
+### Contributors
+
 <!--START contributers-->
 [<img alt="dietergeerts" src="https://avatars1.githubusercontent.com/u/7393706?v=4&s=100" width="100">](https://github.com/dietergeerts) |
 :---: |
