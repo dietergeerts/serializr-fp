@@ -1,3 +1,6 @@
+/**
+ *  @module Schemas
+ */
 import _assign from 'lodash/fp/assign';
 import _flow from 'lodash/fp/flow';
 import _isUndefined from 'lodash/fp/isUndefined';
@@ -29,8 +32,9 @@ export const DATE_ONLY = _assign(DATE, {
 
 /**
  * @private
- * @param {!(ModelSchema|PropertySchema)} schema
- * @returns {!PropertySchema}
+ * @function
+ * @param {ModelSchema|PropertySchema} schema
+ * @returns {PropertySchema}
  */
 const complex = schema => ({
     serialize: serialize(schema),
@@ -38,26 +42,30 @@ const complex = schema => ({
 });
 
 /**
- * @param {!ModelSchema} schema
- * @returns {!PropertySchema}
+ * @function
+ * @param {ModelSchema} schema
+ * @returns {PropertySchema}
  */
 export const object = complex;
 
 /**
- * @param {!PropertySchema} schema
- * @returns {!PropertySchema}
+ * @function
+ * @param {PropertySchema} schema
+ * @returns {PropertySchema}
  */
 export const array = complex;
 
 /**
- * @param {!string} property
- * @param {!PropertySchema} schema
- * @returns {!PropertySchema}
+ * @function
+ * @param {string} property
+ * @param {PropertySchema} schema
+ * @returns {PropertySchema}
  */
 export const alias = (property, schema) => _assign(schema, {property});
 
 /**
  * @private
+ * @function
  * @param {*} value
  * @returns {*|SKIP}
  */
@@ -65,14 +73,16 @@ const skipIfUndefined = value => _isUndefined(value) ? SKIP : value;
 
 /**
  * @private
- * @param {!PropertyTransformer} transformer
- * @returns {!PropertyTransformer}
+ * @function
+ * @param {PropertyTransformer} transformer
+ * @returns {PropertyTransformer}
  */
 const optionalTransformer = transformer => _flow(transformer, skipIfUndefined);
 
 /**
- * @param {!PropertySchema} schema
- * @returns {!PropertySchema}
+ * @function
+ * @param {PropertySchema} schema
+ * @returns {PropertySchema}
  */
 export const optional = schema => ({
     serialize: optionalTransformer(schema.serialize),
@@ -80,8 +90,9 @@ export const optional = schema => ({
 });
 
 /**
- * @param {!function(json: !Object): *} compute
- * @returns {!PropertySchema}
+ * @function
+ * @param {function(!Object): *} compute
+ * @returns {PropertySchema}
  */
 export const computed = compute => ({
     serialize: () => SKIP,
@@ -90,8 +101,9 @@ export const computed = compute => ({
 
 /**
  * @private
- * @param {function(...function): !PropertyTransformer} flow
- * @returns {function(*, !PropertySchema): !PropertySchema}
+ * @function
+ * @param {function(...function): PropertyTransformer} flow
+ * @returns {function(*, PropertySchema): PropertySchema}
  */
 const withDefaultFlow = flow => (defaultValue, schema) => ({
     serialize: schema.serialize,
@@ -102,15 +114,26 @@ const withDefaultFlow = flow => (defaultValue, schema) => ({
 });
 
 /**
- * @param {*} defaultValue
- * @param {!PropertySchema} schema
- * @returns {!PropertySchema}
+ * @function
+ * @param {*} value
+ * @param {PropertySchema} schema
+ * @returns {PropertySchema}
  */
 export const withDefault = withDefaultFlow(_flow);
 
 /**
- * @param {*} defaultValue
- * @param {!PropertySchema} schema
- * @returns {!PropertySchema}
+ * Use a default json value before deserialization,
+ * in case the original value is undefined.
+ *
+ * This can be very handy in case a sub-object is undefined, but you want the
+ * object to always be there, having it's properties initialized. For example,
+ * a patient object which has a person property to hold all it's name parts. In
+ * that case, you always want the person object to be there and have the name
+ * parts set to null instead, so you can use it in a form to fill out.
+ *
+ * @function
+ * @param {*} value
+ * @param {PropertySchema} schema
+ * @returns {PropertySchema}
  */
 export const withJsonDefault = withDefaultFlow(_overArgs);

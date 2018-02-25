@@ -1,3 +1,6 @@
+/**
+ * @module Core
+ */
 import _curry from 'lodash/fp/curry';
 import _flow from 'lodash/fp/flow';
 import _get from 'lodash/fp/get';
@@ -19,22 +22,22 @@ const _transformWithKey = _transform.convert({cap: false});
 
 /**
  * @typedef {Object} PropertySchema
- * @property {!string} [property]
- * @property {!PropertyTransformer} serialize
- * @property {!PropertyTransformer} deserialize
+ * @property {string} [property]
+ * @property {PropertyTransformer} serialize
+ * @property {PropertyTransformer} deserialize
  */
 
 /**
  * @callback PropertyTransformer
  * @param {*} value
- * @param {!Object} [source]
- * @param {!string} [property]
+ * @param {Object} [source]
+ * @param {string} [property]
  * @returns {*}
  */
 
 /**
- * @typedef {function(!ModelSchema|PropertySchema, !Object|Object[]): !Object|Object[]
- *          |function(!ModelSchema|PropertySchema): function(!Object|Object[]): !Object|Object[]} ModelTransformer
+ * @typedef {function((ModelSchema|PropertySchema), (Object|Object[])): (Object|Object[])
+ *          |function((ModelSchema|PropertySchema)): function((Object|Object[])): (Object|Object[])} ModelTransformer
  */
 
 /**
@@ -44,24 +47,27 @@ export const SKIP = Symbol('SKIP');
 
 /**
  * @private
- * @param {!string} property
- * @returns {function(!Object): !boolean}
+ * @function
+ * @param {string} property
+ * @returns {function(Object): boolean}
  */
 const isFunctionProperty = property => _flow(_get(property), _isFunction);
 
 /**
  * @private
- * @param {!(ModelSchema|PropertySchema)} schema
+ * @function
+ * @param {ModelSchema|PropertySchema} schema
  * @returns {boolean}
  */
 const isPropertySchema = _overEvery(isFunctionProperty('serialize'), isFunctionProperty('deserialize'));
 
 /**
  * @private
- * @param {function(!PropertySchema, !string): !string} getSourceProperty
- * @param {function(!PropertySchema): !PropertyTransformer} getTransformer
- * @param {function(!PropertySchema, !string): !string} getTargetProperty
- * @returns {!ModelTransformer}
+ * @function
+ * @param {function(PropertySchema, string): string} getSourceProperty
+ * @param {function(PropertySchema): PropertyTransformer} getTransformer
+ * @param {function(PropertySchema, string): string} getTargetProperty
+ * @returns {ModelTransformer}
  */
 const transform = (getSourceProperty, getTransformer, getTargetProperty) => {
 
@@ -99,17 +105,19 @@ const transform = (getSourceProperty, getTransformer, getTargetProperty) => {
 
 /**
  * @private
- * @param {!PropertySchema} schema
- * @param {!string} property
- * @return {!string}
+ * @function
+ * @param {PropertySchema} schema
+ * @param {string} property
+ * @return {string}
  */
 const getJsonProperty = (schema, property) => schema.property || property;
 
 /**
  * @private
- * @param {!PropertySchema} schema
- * @param {!string} property
- * @return {!string}
+ * @function
+ * @param {PropertySchema} schema
+ * @param {string} property
+ * @return {string}
  */
 const getObjectProperty = (schema, property) => property;
 

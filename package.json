@@ -14,7 +14,8 @@
     "test:unit": "nyc --check-coverage mocha src/**/*.test.js",
     "test:lint": "eslint --ignore-path .gitignore **/*.js",
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
-    "docs:contributers": "githubcontrib --owner dietergeerts --repo serializr-fp --showlogin true --imagesize 100 --format md | node-injectmd -t contributers -i README.md"
+    "docs:contributers": "githubcontrib --owner dietergeerts --repo serializr-fp --showlogin true --imagesize 100 --format md | node-injectmd -t contributers -i README.md",
+    "docs:api": "jsdoc2md src/*.js --template API.hbs > API.md"
   },
   "repository": {
     "type": "git",
@@ -47,6 +48,7 @@
     "eslint": "^4.18.0",
     "github-contributors-list": "^1.2.3",
     "injectmd": "^1.0.0",
+    "jsdoc-to-markdown": "^4.0.1",
     "mocha": "^5.0.0",
     "must": "^0.13.4",
     "must-sinon": "0.0.0",
