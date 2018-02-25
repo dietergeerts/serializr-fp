@@ -73,7 +73,7 @@ export const serializePatient = serialize(PATIENT_SCHEMA);
 [![Code Climate](https://img.shields.io/codeclimate/maintainability/dietergeerts/serializr-fp.svg?style=for-the-badge)](https://codeclimate.com/github/dietergeerts/serializr-fp/maintainability)
 [![David](https://img.shields.io/david/dev/dietergeerts/serializr-fp.svg?style=for-the-badge)](https://david-dm.org/dietergeerts/serializr-fp)
 
-All contributions welcome
+> All contributions welcome
 
 ### Contributors
 
