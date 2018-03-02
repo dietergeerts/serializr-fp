@@ -1,5 +1,5 @@
 /**
- * @module Core
+ * @module serializrFp/core
  */
 import _curry from 'lodash/fp/curry';
 import _flow from 'lodash/fp/flow';

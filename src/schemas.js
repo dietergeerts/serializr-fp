@@ -1,9 +1,14 @@
 /**
- *  @module Schemas
+ *  @module serializrFp/schemas
  */
 import _assign from 'lodash/fp/assign';
+import _curry from 'lodash/fp/curry';
 import _flow from 'lodash/fp/flow';
+import _isNil from 'lodash/fp/isNil';
+import _isNull from 'lodash/fp/isNull';
+import _isPlainObject from 'lodash/fp/isPlainObject';
 import _isUndefined from 'lodash/fp/isUndefined';
+import _omitBy from 'lodash/fp/omitBy';
 import _overArgs from 'lodash/fp/overArgs';
 import {deserialize, serialize, SKIP} from "./core";
 
@@ -114,6 +119,9 @@ const withDefaultFlow = flow => (defaultValue, schema) => ({
 });
 
 /**
+ * Use a default value after deserialization,
+ * in cae the value turns up undefined.
+ *
  * @function
  * @param {*} value
  * @param {PropertySchema} schema
@@ -137,3 +145,55 @@ export const withDefault = withDefaultFlow(_flow);
  * @returns {PropertySchema}
  */
 export const withJsonDefault = withDefaultFlow(_overArgs);
+
+/**
+ * Skip the value after serialization if predicate returns true,
+ * in case the BE doesn't want to receive certain values.
+ *
+ * Some REST API's rather have the key not being there than having a certain
+ * value they see as a nil value, like `null`, `""` or `{}`. In that case, this
+ * skip schema can be used with a predicate function to check.
+ *
+ * @function
+ * @param {function(*): boolean} predicate
+ * @param {PropertySchema} schema
+ * @returns {PropertySchema}
+ */
+export const skipBy = _curry((predicate, schema) => ({
+    serialize: _flow(schema.serialize, value => predicate(value) ? SKIP : value),
+    deserialize: schema.deserialize,
+}));
+
+/**
+ * Skip `null` value after serialization.
+ *
+ * @see {@link skipBy}
+ * @function
+ * @param {PropertySchema} schema
+ * @returns {PropertySchema}
+ */
+export const skipNull = skipBy(_isNil);
+
+/**
+ * Omit values after serialization.
+ *
+ * @see {@link skipBy}
+ * @function
+ * @param {function(*): boolean} predicate
+ * @param {PropertySchema} schema
+ * @returns {PropertySchema}
+ */
+export const omitBy = _curry((predicate, schema) => ({
+    serialize: _flow(schema.serialize, value => _isPlainObject(value) ? _omitBy(predicate, value) : value),
+    deserialize: schema.deserialize,
+}));
+
+/**
+ * Omit `null` values after serialization.
+ *
+ * @see {@link omitBy}
+ * @function
+ * @param {PropertySchema} schema
+ * @returns {PropertySchema}
+ */
+export const omitNull = omitBy(_isNull);

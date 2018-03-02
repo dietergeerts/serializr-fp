@@ -7,47 +7,47 @@
 ## Modules
 
 <dl>
-<dt><a href="#module_Core">Core</a></dt>
+<dt><a href="#module_serializrFp/core">serializrFp/core</a></dt>
 <dd></dd>
-<dt><a href="#module_Schemas">Schemas</a></dt>
+<dt><a href="#module_serializrFp/schemas">serializrFp/schemas</a></dt>
 <dd></dd>
 </dl>
 
-<a name="module_Core"></a>
+<a name="module_serializrFp/core"></a>
 
-## Core
+## serializrFp/core
 
-* [Core](#module_Core)
+* [serializrFp/core](#module_serializrFp/core)
     * _static_
-        * [.SKIP](#module_Core.SKIP) : <code>symbol</code>
-        * [.serialize](#module_Core.serialize) : <code>ModelTransformer</code>
-        * [.deserialize](#module_Core.deserialize) : <code>ModelTransformer</code>
+        * [.SKIP](#module_serializrFp/core.SKIP) : <code>symbol</code>
+        * [.serialize](#module_serializrFp/core.serialize) : <code>ModelTransformer</code>
+        * [.deserialize](#module_serializrFp/core.deserialize) : <code>ModelTransformer</code>
     * _inner_
-        * [~ModelSchema](#module_Core..ModelSchema) : <code>Object.&lt;string, !PropertySchema&gt;</code>
-        * [~PropertySchema](#module_Core..PropertySchema) : <code>Object</code>
-        * [~PropertyTransformer](#module_Core..PropertyTransformer) ⇒ <code>\*</code>
-        * [~ModelTransformer](#module_Core..ModelTransformer) : <code>function</code> \| <code>function</code>
+        * [~ModelSchema](#module_serializrFp/core..ModelSchema) : <code>Object.&lt;string, !PropertySchema&gt;</code>
+        * [~PropertySchema](#module_serializrFp/core..PropertySchema) : <code>Object</code>
+        * [~PropertyTransformer](#module_serializrFp/core..PropertyTransformer) ⇒ <code>\*</code>
+        * [~ModelTransformer](#module_serializrFp/core..ModelTransformer) : <code>function</code> \| <code>function</code>
 
-<a name="module_Core.SKIP"></a>
+<a name="module_serializrFp/core.SKIP"></a>
 
-### Core.SKIP : <code>symbol</code>
-**Kind**: static constant of [<code>Core</code>](#module_Core)  
-<a name="module_Core.serialize"></a>
+### serializrFp/core.SKIP : <code>symbol</code>
+**Kind**: static constant of [<code>serializrFp/core</code>](#module_serializrFp/core)  
+<a name="module_serializrFp/core.serialize"></a>
 
-### Core.serialize : <code>ModelTransformer</code>
-**Kind**: static constant of [<code>Core</code>](#module_Core)  
-<a name="module_Core.deserialize"></a>
+### serializrFp/core.serialize : <code>ModelTransformer</code>
+**Kind**: static constant of [<code>serializrFp/core</code>](#module_serializrFp/core)  
+<a name="module_serializrFp/core.deserialize"></a>
 
-### Core.deserialize : <code>ModelTransformer</code>
-**Kind**: static constant of [<code>Core</code>](#module_Core)  
-<a name="module_Core..ModelSchema"></a>
+### serializrFp/core.deserialize : <code>ModelTransformer</code>
+**Kind**: static constant of [<code>serializrFp/core</code>](#module_serializrFp/core)  
+<a name="module_serializrFp/core..ModelSchema"></a>
 
-### Core~ModelSchema : <code>Object.&lt;string, !PropertySchema&gt;</code>
-**Kind**: inner typedef of [<code>Core</code>](#module_Core)  
-<a name="module_Core..PropertySchema"></a>
+### serializrFp/core~ModelSchema : <code>Object.&lt;string, !PropertySchema&gt;</code>
+**Kind**: inner typedef of [<code>serializrFp/core</code>](#module_serializrFp/core)  
+<a name="module_serializrFp/core..PropertySchema"></a>
 
-### Core~PropertySchema : <code>Object</code>
-**Kind**: inner typedef of [<code>Core</code>](#module_Core)  
+### serializrFp/core~PropertySchema : <code>Object</code>
+**Kind**: inner typedef of [<code>serializrFp/core</code>](#module_serializrFp/core)  
 **Properties**
 
 | Name | Type |
@@ -56,10 +56,10 @@
 | serialize | <code>PropertyTransformer</code> | 
 | deserialize | <code>PropertyTransformer</code> | 
 
-<a name="module_Core..PropertyTransformer"></a>
+<a name="module_serializrFp/core..PropertyTransformer"></a>
 
-### Core~PropertyTransformer ⇒ <code>\*</code>
-**Kind**: inner typedef of [<code>Core</code>](#module_Core)  
+### serializrFp/core~PropertyTransformer ⇒ <code>\*</code>
+**Kind**: inner typedef of [<code>serializrFp/core</code>](#module_serializrFp/core)  
 
 | Param | Type |
 | --- | --- |
@@ -67,97 +67,104 @@
 | [source] | <code>Object</code> | 
 | [property] | <code>string</code> | 
 
-<a name="module_Core..ModelTransformer"></a>
+<a name="module_serializrFp/core..ModelTransformer"></a>
 
-### Core~ModelTransformer : <code>function</code> \| <code>function</code>
-**Kind**: inner typedef of [<code>Core</code>](#module_Core)  
-<a name="module_Schemas"></a>
+### serializrFp/core~ModelTransformer : <code>function</code> \| <code>function</code>
+**Kind**: inner typedef of [<code>serializrFp/core</code>](#module_serializrFp/core)  
+<a name="module_serializrFp/schemas"></a>
 
-## Schemas
+## serializrFp/schemas
 
-* [Schemas](#module_Schemas)
-    * [.PRIMITIVE](#module_Schemas.PRIMITIVE) : <code>PropertySchema</code>
-    * [.DATE](#module_Schemas.DATE) : <code>PropertySchema</code>
-    * [.DATE_ONLY](#module_Schemas.DATE_ONLY) : <code>PropertySchema</code>
-    * [.object(schema)](#module_Schemas.object) ⇒ <code>PropertySchema</code>
-    * [.array(schema)](#module_Schemas.array) ⇒ <code>PropertySchema</code>
-    * [.alias(property, schema)](#module_Schemas.alias) ⇒ <code>PropertySchema</code>
-    * [.optional(schema)](#module_Schemas.optional) ⇒ <code>PropertySchema</code>
-    * [.computed(compute)](#module_Schemas.computed) ⇒ <code>PropertySchema</code>
-    * [.withDefault(value, schema)](#module_Schemas.withDefault) ⇒ <code>PropertySchema</code>
-    * [.withJsonDefault(value, schema)](#module_Schemas.withJsonDefault) ⇒ <code>PropertySchema</code>
+* [serializrFp/schemas](#module_serializrFp/schemas)
+    * [.PRIMITIVE](#module_serializrFp/schemas.PRIMITIVE) : <code>PropertySchema</code>
+    * [.DATE](#module_serializrFp/schemas.DATE) : <code>PropertySchema</code>
+    * [.DATE_ONLY](#module_serializrFp/schemas.DATE_ONLY) : <code>PropertySchema</code>
+    * [.object(schema)](#module_serializrFp/schemas.object) ⇒ <code>PropertySchema</code>
+    * [.array(schema)](#module_serializrFp/schemas.array) ⇒ <code>PropertySchema</code>
+    * [.alias(property, schema)](#module_serializrFp/schemas.alias) ⇒ <code>PropertySchema</code>
+    * [.optional(schema)](#module_serializrFp/schemas.optional) ⇒ <code>PropertySchema</code>
+    * [.computed(compute)](#module_serializrFp/schemas.computed) ⇒ <code>PropertySchema</code>
+    * [.withDefault(value, schema)](#module_serializrFp/schemas.withDefault) ⇒ <code>PropertySchema</code>
+    * [.withJsonDefault(value, schema)](#module_serializrFp/schemas.withJsonDefault) ⇒ <code>PropertySchema</code>
+    * [.skipBy(predicate, schema)](#module_serializrFp/schemas.skipBy) ⇒ <code>PropertySchema</code>
+    * [.skipNull(schema)](#module_serializrFp/schemas.skipNull) ⇒ <code>PropertySchema</code>
+    * [.omitBy(predicate, schema)](#module_serializrFp/schemas.omitBy) ⇒ <code>PropertySchema</code>
+    * [.omitNull(schema)](#module_serializrFp/schemas.omitNull) ⇒ <code>PropertySchema</code>
 
-<a name="module_Schemas.PRIMITIVE"></a>
+<a name="module_serializrFp/schemas.PRIMITIVE"></a>
 
-### Schemas.PRIMITIVE : <code>PropertySchema</code>
-**Kind**: static constant of [<code>Schemas</code>](#module_Schemas)  
-<a name="module_Schemas.DATE"></a>
+### serializrFp/schemas.PRIMITIVE : <code>PropertySchema</code>
+**Kind**: static constant of [<code>serializrFp/schemas</code>](#module_serializrFp/schemas)  
+<a name="module_serializrFp/schemas.DATE"></a>
 
-### Schemas.DATE : <code>PropertySchema</code>
-**Kind**: static constant of [<code>Schemas</code>](#module_Schemas)  
-<a name="module_Schemas.DATE_ONLY"></a>
+### serializrFp/schemas.DATE : <code>PropertySchema</code>
+**Kind**: static constant of [<code>serializrFp/schemas</code>](#module_serializrFp/schemas)  
+<a name="module_serializrFp/schemas.DATE_ONLY"></a>
 
-### Schemas.DATE_ONLY : <code>PropertySchema</code>
-**Kind**: static constant of [<code>Schemas</code>](#module_Schemas)  
-<a name="module_Schemas.object"></a>
+### serializrFp/schemas.DATE_ONLY : <code>PropertySchema</code>
+**Kind**: static constant of [<code>serializrFp/schemas</code>](#module_serializrFp/schemas)  
+<a name="module_serializrFp/schemas.object"></a>
 
-### Schemas.object(schema) ⇒ <code>PropertySchema</code>
-**Kind**: static method of [<code>Schemas</code>](#module_Schemas)  
+### serializrFp/schemas.object(schema) ⇒ <code>PropertySchema</code>
+**Kind**: static method of [<code>serializrFp/schemas</code>](#module_serializrFp/schemas)  
 
 | Param | Type |
 | --- | --- |
 | schema | <code>ModelSchema</code> | 
 
-<a name="module_Schemas.array"></a>
+<a name="module_serializrFp/schemas.array"></a>
 
-### Schemas.array(schema) ⇒ <code>PropertySchema</code>
-**Kind**: static method of [<code>Schemas</code>](#module_Schemas)  
+### serializrFp/schemas.array(schema) ⇒ <code>PropertySchema</code>
+**Kind**: static method of [<code>serializrFp/schemas</code>](#module_serializrFp/schemas)  
 
 | Param | Type |
 | --- | --- |
 | schema | <code>PropertySchema</code> | 
 
-<a name="module_Schemas.alias"></a>
+<a name="module_serializrFp/schemas.alias"></a>
 
-### Schemas.alias(property, schema) ⇒ <code>PropertySchema</code>
-**Kind**: static method of [<code>Schemas</code>](#module_Schemas)  
+### serializrFp/schemas.alias(property, schema) ⇒ <code>PropertySchema</code>
+**Kind**: static method of [<code>serializrFp/schemas</code>](#module_serializrFp/schemas)  
 
 | Param | Type |
 | --- | --- |
 | property | <code>string</code> | 
 | schema | <code>PropertySchema</code> | 
 
-<a name="module_Schemas.optional"></a>
+<a name="module_serializrFp/schemas.optional"></a>
 
-### Schemas.optional(schema) ⇒ <code>PropertySchema</code>
-**Kind**: static method of [<code>Schemas</code>](#module_Schemas)  
+### serializrFp/schemas.optional(schema) ⇒ <code>PropertySchema</code>
+**Kind**: static method of [<code>serializrFp/schemas</code>](#module_serializrFp/schemas)  
 
 | Param | Type |
 | --- | --- |
 | schema | <code>PropertySchema</code> | 
 
-<a name="module_Schemas.computed"></a>
+<a name="module_serializrFp/schemas.computed"></a>
 
-### Schemas.computed(compute) ⇒ <code>PropertySchema</code>
-**Kind**: static method of [<code>Schemas</code>](#module_Schemas)  
+### serializrFp/schemas.computed(compute) ⇒ <code>PropertySchema</code>
+**Kind**: static method of [<code>serializrFp/schemas</code>](#module_serializrFp/schemas)  
 
 | Param | Type |
 | --- | --- |
 | compute | <code>function</code> | 
 
-<a name="module_Schemas.withDefault"></a>
+<a name="module_serializrFp/schemas.withDefault"></a>
 
-### Schemas.withDefault(value, schema) ⇒ <code>PropertySchema</code>
-**Kind**: static method of [<code>Schemas</code>](#module_Schemas)  
+### serializrFp/schemas.withDefault(value, schema) ⇒ <code>PropertySchema</code>
+Use a default value after deserialization,
+in cae the value turns up undefined.
+
+**Kind**: static method of [<code>serializrFp/schemas</code>](#module_serializrFp/schemas)  
 
 | Param | Type |
 | --- | --- |
 | value | <code>\*</code> | 
 | schema | <code>PropertySchema</code> | 
 
-<a name="module_Schemas.withJsonDefault"></a>
+<a name="module_serializrFp/schemas.withJsonDefault"></a>
 
-### Schemas.withJsonDefault(value, schema) ⇒ <code>PropertySchema</code>
+### serializrFp/schemas.withJsonDefault(value, schema) ⇒ <code>PropertySchema</code>
 Use a default json value before deserialization,
 in case the original value is undefined.
 
@@ -167,10 +174,64 @@ a patient object which has a person property to hold all it's name parts. In
 that case, you always want the person object to be there and have the name
 parts set to null instead, so you can use it in a form to fill out.
 
-**Kind**: static method of [<code>Schemas</code>](#module_Schemas)  
+**Kind**: static method of [<code>serializrFp/schemas</code>](#module_serializrFp/schemas)  
 
 | Param | Type |
 | --- | --- |
 | value | <code>\*</code> | 
+| schema | <code>PropertySchema</code> | 
+
+<a name="module_serializrFp/schemas.skipBy"></a>
+
+### serializrFp/schemas.skipBy(predicate, schema) ⇒ <code>PropertySchema</code>
+Skip the value after serialization if predicate returns true,
+in case the BE doesn't want to receive certain values.
+
+Some REST API's rather have the key not being there than having a certain
+value they see as a nil value, like `null`, `""` or `{}`. In that case, this
+skip schema can be used with a predicate function to check.
+
+**Kind**: static method of [<code>serializrFp/schemas</code>](#module_serializrFp/schemas)  
+
+| Param | Type |
+| --- | --- |
+| predicate | <code>function</code> | 
+| schema | <code>PropertySchema</code> | 
+
+<a name="module_serializrFp/schemas.skipNull"></a>
+
+### serializrFp/schemas.skipNull(schema) ⇒ <code>PropertySchema</code>
+Skip `null` value after serialization.
+
+**Kind**: static method of [<code>serializrFp/schemas</code>](#module_serializrFp/schemas)  
+**See**: [skipBy](skipBy)  
+
+| Param | Type |
+| --- | --- |
+| schema | <code>PropertySchema</code> | 
+
+<a name="module_serializrFp/schemas.omitBy"></a>
+
+### serializrFp/schemas.omitBy(predicate, schema) ⇒ <code>PropertySchema</code>
+Omit values after serialization.
+
+**Kind**: static method of [<code>serializrFp/schemas</code>](#module_serializrFp/schemas)  
+**See**: [skipBy](skipBy)  
+
+| Param | Type |
+| --- | --- |
+| predicate | <code>function</code> | 
+| schema | <code>PropertySchema</code> | 
+
+<a name="module_serializrFp/schemas.omitNull"></a>
+
+### serializrFp/schemas.omitNull(schema) ⇒ <code>PropertySchema</code>
+Omit `null` values after serialization.
+
+**Kind**: static method of [<code>serializrFp/schemas</code>](#module_serializrFp/schemas)  
+**See**: [omitBy](omitBy)  
+
+| Param | Type |
+| --- | --- |
 | schema | <code>PropertySchema</code> | 
 

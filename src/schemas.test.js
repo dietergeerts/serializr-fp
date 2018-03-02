@@ -189,3 +189,37 @@ describe('withJsonDefault', () => {
             demand(primitive.deserialize).to.be.calledWith('B');
         });
 });
+
+describe('skipBy', () => {
+
+    it(`must serialize`);
+
+    it(`must deserialize`);
+});
+
+describe('skipNull', () => {
+
+    it(`must serialize`);
+
+    it(`must deserialize`);
+});
+
+describe('omitBy', () => {
+
+    it(`must serialize`);
+
+    it(`must deserialize`);
+});
+
+describe('omitNull', () => {
+
+    it(`must serialize`);
+
+    it(`must deserialize`);
+});
+
+describe('compounds', () => {
+
+    it(`must be able to combine schemas successful,
+    so they can be used in any order that's readable for the consumer.`);
+});
