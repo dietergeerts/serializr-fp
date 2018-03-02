@@ -1,6 +1,6 @@
 {
   "name": "serializr-fp",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "(De)serialize complex object graphs to/from JSON",
   "main": "dist/index.js",
   "files": [
