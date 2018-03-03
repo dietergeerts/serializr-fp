@@ -2,20 +2,21 @@
   "name": "serializr-fp",
   "version": "0.1.9",
   "description": "(De)serialize complex object graphs to/from JSON",
-  "main": "dist/index.js",
+  "main": "index.js",
   "files": [
-    "dist"
+    "core",
+    "schemas"
   ],
   "scripts": {
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf core && rimraf schemas && rimraf index.js",
     "build": "cross-env NODE_ENV=production npm run build:src",
-    "build:src": "babel src --out-dir dist --ignore *.test.js",
+    "build:src": "babel src --out-dir . --ignore *.test.js",
     "test": "cross-env NODE_ENV=test npm run test:unit && npm run test:lint",
     "test:unit": "nyc --check-coverage mocha src/**/*.test.js",
     "test:lint": "eslint --ignore-path .gitignore **/*.js",
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "docs:contributers": "githubcontrib --owner dietergeerts --repo serializr-fp --showlogin true --imagesize 100 --format md | node-injectmd -t contributers -i README.md",
-    "docs:api": "jsdoc2md src/*.js --template API.hbs > API.md"
+    "docs:api": "jsdoc2md src/**/*.js --template API.hbs > API.md"
   },
   "repository": {
     "type": "git",

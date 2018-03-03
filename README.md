@@ -9,7 +9,9 @@
 
 A FP (Functional Programming) alternative to [serializr](https://github.com/mobxjs/serializr),
 with a simpler approach for ease of use and better customization, configure
-(de)serialization through schema's, improving readability and maintainability.  
+(de)serialization through schema's, improving readability and maintainability.
+
+[More info about the internals and principles →](./principles.md)
 
 ## Install
 
@@ -22,17 +24,15 @@ npm install serializr-fp --save
 ```javascript
 import {alias, computed, DATE_ONLY, deserialize, object, PRIMITIVE, serialize} from 'serializr-fp';
 
-const NAME_SCHEMA = {
-    firstName: PRIMITIVE, 
-    lastName: PRIMITIVE,
-    fullName: computed(json => `${json.firstName} ${json.lastName}`),
-};
-
-const PATIENT_SCHEMA = {
+const PATIENT_SCHEMA = object({
     id: alias('_id', PRIMITIVE),
-    person: object(NAME_SCHEMA),
+    person: object({
+        firstName: PRIMITIVE, 
+        lastName: PRIMITIVE,
+        fullName: computed(json => `${json.firstName} ${json.lastName}`),
+    }),
     dateOfBirth: alias('dob', DATE_ONLY),
-};
+});
 
 const source = {
     id: '123',
@@ -44,8 +44,8 @@ const source = {
     dateOfBirth: new Date('1982-10-08'),
 }; 
 
-const json = serialize(PATIENT_SCHEMA, source);
-const patient = deserialize(PATIENT_SCHEMA, json);
+const json = PATIENT_SCHEMA.serialize(source);
+const patient = PATIENT_SCHEMA.deserialize(json);
 
 console.log(json); 
 console.log(patient);
@@ -53,9 +53,11 @@ console.log(patient);
 // Or you can export functions for other modules to use,
 // without the need to know how (de)serialization is done.
 
-export const deserializePatient = deserialize(PATIENT_SCHEMA);
-export const serializePatient = serialize(PATIENT_SCHEMA);
+export const deserializePatient = PATIENT_SCHEMA.deserialize;
+export const serializePatient = PATIENT_SCHEMA.serialize;
 ```
+
+[More useful examples →](./examples.md)
 
 ## API
 
