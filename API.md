@@ -71,10 +71,6 @@ parts set to null instead, so you can use it in a form to fill out.</p>
 <dl>
 <dt><a href="#ComputeObjectModel">ComputeObjectModel</a> ⇒ <code>OBJECT</code></dt>
 <dd></dd>
-<dt><a href="#ModelSchema">ModelSchema</a> : <code>Object</code></dt>
-<dd></dd>
-<dt><a href="#ModelTransformer">ModelTransformer</a> ⇒ <code>TARGET</code></dt>
-<dd></dd>
 <dt><a href="#ObjectModelSchema">ObjectModelSchema</a> : <code>ModelSchema.&lt;OBJECT, Object&gt;</code></dt>
 <dd></dd>
 <dt><a href="#ObjectSchema">ObjectSchema</a> : <code>Object.&lt;string, PropertySchema&gt;</code></dt>
@@ -82,6 +78,10 @@ parts set to null instead, so you can use it in a form to fill out.</p>
 <dt><a href="#PropertySchema">PropertySchema</a> : <code>Object</code></dt>
 <dd></dd>
 <dt><a href="#PropertyTransformer">PropertyTransformer</a> ⇒ <code>TARGET</code></dt>
+<dd></dd>
+<dt><a href="#ModelSchema">ModelSchema</a> : <code>Object</code></dt>
+<dd></dd>
+<dt><a href="#ModelTransformer">ModelTransformer</a> ⇒ <code>TARGET</code></dt>
 <dd></dd>
 </dl>
 
@@ -264,28 +264,6 @@ parts set to null instead, so you can use it in a form to fill out.
 | property | <code>string</code> |  |
 | {JSON) |  | value |
 
-<a name="ModelSchema"></a>
-
-## ModelSchema : <code>Object</code>
-**Kind**: global typedef  
-**Template**: OBJECT, JSON  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| serialize | <code>ModelTransformer.&lt;OBJECT, JSON&gt;</code> | 
-| deserialize | <code>ModelTransformer.&lt;JSON, OBJECT&gt;</code> | 
-
-<a name="ModelTransformer"></a>
-
-## ModelTransformer ⇒ <code>TARGET</code>
-**Kind**: global typedef  
-**Template**: SOURCE, TARGET  
-
-| Param | Type |
-| --- | --- |
-| value | <code>SOURCE</code> | 
-
 <a name="ObjectModelSchema"></a>
 
 ## ObjectModelSchema : <code>ModelSchema.&lt;OBJECT, Object&gt;</code>
@@ -319,4 +297,26 @@ parts set to null instead, so you can use it in a form to fill out.
 | value | <code>SOURCE</code> | 
 | source | <code>Object</code> | 
 | property | <code>string</code> | 
+
+<a name="ModelSchema"></a>
+
+## ModelSchema : <code>Object</code>
+**Kind**: global typedef  
+**Template**: OBJECT, JSON  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| serialize | <code>ModelTransformer.&lt;OBJECT, JSON&gt;</code> | 
+| deserialize | <code>ModelTransformer.&lt;JSON, OBJECT&gt;</code> | 
+
+<a name="ModelTransformer"></a>
+
+## ModelTransformer ⇒ <code>TARGET</code>
+**Kind**: global typedef  
+**Template**: SOURCE, TARGET  
+
+| Param | Type |
+| --- | --- |
+| value | <code>SOURCE</code> | 
 

@@ -12,17 +12,3 @@ export {skipBy} from './skip-by';
 export {skipNull} from './skip-null';
 export {withDefault} from './with-default';
 export {withJsonDefault} from './with-json-default';
-
-/**
- * @typedef {Object} ModelSchema
- * @property {ModelTransformer<OBJECT, JSON>} serialize
- * @property {ModelTransformer<JSON, OBJECT>} deserialize
- * @template OBJECT, JSON
- */
-
-/**
- * @callback ModelTransformer
- * @param {SOURCE} value
- * @returns {TARGET}
- * @template SOURCE, TARGET
- */
