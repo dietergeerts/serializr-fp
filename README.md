@@ -1,9 +1,10 @@
 # serializr-fp
 
-[![npm](https://img.shields.io/npm/v/serializr-fp.svg?style=for-the-badge)](https://www.npmjs.com/serializr-fp)
-[![Codecov](https://img.shields.io/codecov/c/github/dietergeerts/serializr-fp.svg?style=for-the-badge)](https://codecov.io/gh/dietergeerts/serializr-fp)
-[![Travis](https://img.shields.io/travis/dietergeerts/serializr-fp.svg?style=for-the-badge)](https://travis-ci.org/dietergeerts/serializr-fp)
-[![David](https://img.shields.io/david/dietergeerts/serializr-fp.svg?style=for-the-badge)](https://david-dm.org/dietergeerts/serializr-fp)
+[![npm](https://img.shields.io/npm/v/serializr-fp.svg?style=flat-square)](https://www.npmjs.com/serializr-fp)
+[![codecov](https://img.shields.io/codecov/c/github/dietergeerts/serializr-fp.svg?style=flat-square)](https://codecov.io/gh/dietergeerts/serializr-fp)
+[![travis](https://img.shields.io/travis/dietergeerts/serializr-fp.svg?style=flat-square)](https://travis-ci.org/dietergeerts/serializr-fp)
+[![david](https://img.shields.io/david/dietergeerts/serializr-fp.svg?style=flat-square)](https://david-dm.org/dietergeerts/serializr-fp)
+[![snyk](https://snyk.io/test/github/dietergeerts/serializr-fp/badge.svg?style=flat-square)](https://snyk.io/test/github/{username}/{repo})
 
 > (De)serialize complex object graphs to/from JSON
 
@@ -71,9 +72,10 @@ export const serializePatient = PATIENT_SCHEMA.serialize;
 
 ## Contribute
 
-[![Codacy grade](https://img.shields.io/codacy/grade/9f5cae0799824989a4f3e576c0230fa2.svg?style=for-the-badge)](https://www.codacy.com/app/dietergeerts/serializr-fp)
-[![Code Climate](https://img.shields.io/codeclimate/maintainability/dietergeerts/serializr-fp.svg?style=for-the-badge)](https://codeclimate.com/github/dietergeerts/serializr-fp/maintainability)
-[![David](https://img.shields.io/david/dev/dietergeerts/serializr-fp.svg?style=for-the-badge)](https://david-dm.org/dietergeerts/serializr-fp)
+[![codacy](https://img.shields.io/codacy/grade/9f5cae0799824989a4f3e576c0230fa2.svg?style=flat-square&label=codacy)](https://www.codacy.com/app/dietergeerts/serializr-fp)
+[![codeclimate](https://img.shields.io/codeclimate/maintainability/dietergeerts/serializr-fp.svg?style=flat-square&label=codeclimate)](https://codeclimate.com/github/dietergeerts/serializr-fp/maintainability)
+[![codefactor](https://www.codefactor.io/repository/github/dietergeerts/serializr-fp/badge?style=flat-square)](https://www.codefactor.io/repository/github/dietergeerts/serializr-fp)
+[![david](https://img.shields.io/david/dev/dietergeerts/serializr-fp.svg?style=flat-square)](https://david-dm.org/dietergeerts/serializr-fp)
 
 > All contributions welcome
 
