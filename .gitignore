@@ -114,3 +114,7 @@ fabric.properties
 /index.js
 /schemas/
 /core/
+
+## IntelliJ IDEA Project settings
+!/.idea/codeStyles/codeStyleConfig.xml
+!/.idea/codeStyles/Project.xml

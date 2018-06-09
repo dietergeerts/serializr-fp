@@ -1,5 +1,5 @@
 import _isNil from 'lodash/fp/isNil';
-import skipBy from './skip-by';
+import { skipBy } from './skip-by';
 
 /**
  * Skip `null` value after serialization.

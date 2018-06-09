@@ -1,7 +1,7 @@
 import _assign from 'lodash/fp/assign';
 import _flow from 'lodash/fp/flow';
 import _isUndefined from 'lodash/fp/isUndefined';
-import SKIP from '../core/skip';
+import { SKIP } from '../core/skip';
 
 /**
  * @private
@@ -9,7 +9,7 @@ import SKIP from '../core/skip';
  * @param {*} value
  * @returns {*|SKIP}
  */
-const skipIfUndefined = value => _isUndefined(value) ? SKIP : value;
+const skipIfUndefined = value => (_isUndefined(value) ? SKIP : value);
 
 /**
  * @function
@@ -19,8 +19,8 @@ const skipIfUndefined = value => _isUndefined(value) ? SKIP : value;
  * @template OBJECT, JSON
  */
 export const optional = schema => _assign(schema, {
-    serialize: _flow(schema.serialize, skipIfUndefined),
-    deserialize: _flow(schema.deserialize, skipIfUndefined),
+  serialize: _flow(schema.serialize, skipIfUndefined),
+  deserialize: _flow(schema.deserialize, skipIfUndefined),
 });
 
 export default optional;

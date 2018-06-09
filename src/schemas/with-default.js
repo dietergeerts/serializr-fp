@@ -15,7 +15,7 @@ import _isUndefined from 'lodash/fp/isUndefined';
  * @template OBJECT, JSON
  */
 export const withDefault = (defaultValue, schema) => _assign(schema, {
-    deserialize: _flow(schema.deserialize, value => _isUndefined(value) ? defaultValue : value),
+  deserialize: _flow(schema.deserialize, value => (_isUndefined(value) ? defaultValue : value)),
 });
 
 export default withDefault;

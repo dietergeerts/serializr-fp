@@ -1,8 +1,7 @@
 import './../../test/setup';
 
 describe('omitNull', () => {
+  it('must serialize');
 
-    it(`must serialize`);
-
-    it(`must deserialize`);
+  it('must deserialize');
 });

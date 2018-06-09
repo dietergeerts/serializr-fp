@@ -13,7 +13,7 @@
     "build:src": "babel src --out-dir . --ignore *.test.js",
     "test": "cross-env NODE_ENV=test npm run test:unit && npm run test:lint",
     "test:unit": "nyc --check-coverage mocha src/**/*.test.js",
-    "test:lint": "eslint --ignore-path .gitignore **/*.js",
+    "test:lint": "eslint --ignore-path .gitignore .",
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "docs:contributers": "githubcontrib --owner dietergeerts --repo serializr-fp --showlogin true --imagesize 100 --format md | node-injectmd -t contributers -i README.md",
     "docs:api": "jsdoc2md src/**/*.js --template API.hbs > API.md"
@@ -47,6 +47,8 @@
     "codecov": "^3.0.0",
     "cross-env": "^5.1.3",
     "eslint": "^4.18.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
     "github-contributors-list": "^1.2.3",
     "injectmd": "^1.0.0",
     "jsdoc-to-markdown": "^4.0.1",

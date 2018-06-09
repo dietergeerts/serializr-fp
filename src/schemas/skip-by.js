@@ -1,7 +1,7 @@
 import _assign from 'lodash/fp/assign';
 import _curry from 'lodash/fp/curry';
 import _flow from 'lodash/fp/flow';
-import SKIP from '../core/skip';
+import { SKIP } from '../core/skip';
 
 /**
  * Skip the value after serialization if predicate returns true,
@@ -19,7 +19,7 @@ import SKIP from '../core/skip';
  * @template OBJECT, JSON
  */
 export const skipBy = _curry((predicate, schema) => _assign(schema, {
-    serialize: _flow(schema.serialize, value => predicate(value) ? SKIP : value),
+  serialize: _flow(schema.serialize, value => (predicate(value) ? SKIP : value)),
 }));
 
 export default skipBy;

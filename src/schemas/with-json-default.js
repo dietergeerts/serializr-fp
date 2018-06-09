@@ -21,7 +21,7 @@ import _overArgs from 'lodash/fp/overArgs';
  * @template OBJECT, JSON
  */
 export const withJsonDefault = (defaultValue, schema) => _assign(schema, {
-    deserialize: _overArgs(schema.deserialize, value => _isUndefined(value) ? defaultValue : value),
+  deserialize: _overArgs(schema.deserialize, value => (_isUndefined(value) ? defaultValue : value)),
 });
 
 export default withJsonDefault;

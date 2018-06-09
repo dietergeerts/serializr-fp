@@ -1,4 +1,4 @@
-import SKIP from '../core/skip';
+import { SKIP } from '../core/skip';
 
 /**
  * @callback ComputeObjectModel
@@ -16,8 +16,8 @@ import SKIP from '../core/skip';
  * @template OBJECT, JSON
  */
 export const computed = compute => ({
-    serialize: () => SKIP,
-    deserialize: (value, json, property) => compute(json, property, value),
+  serialize: () => SKIP,
+  deserialize: (value, json, property) => compute(json, property, value),
 });
 
 export default computed;
