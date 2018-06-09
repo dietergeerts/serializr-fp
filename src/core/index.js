@@ -1,1 +1,1 @@
-export {SKIP} from './skip';
+export { SKIP } from './skip';

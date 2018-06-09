@@ -110,7 +110,11 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-/.idea/
+.idea/
 /index.js
 /schemas/
 /core/
+
+## IntelliJ IDEA Project settings
+!.idea/codeStyles/codeStyleConfig.xml
+!.idea/codeStyles/Project.xml

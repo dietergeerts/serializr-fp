@@ -3,10 +3,10 @@ import _get from 'lodash/fp/get';
 import _isUndefined from 'lodash/fp/isUndefined';
 import _set from 'lodash/fp/set';
 import _transform from 'lodash/fp/transform';
-import SKIP from '../core/skip';
+import { SKIP } from '../core/skip';
 
-const _setMutable = _set.convert({immutable: false});
-const _transformWithKey = _transform.convert({cap: false});
+const setMutable = _set.convert({ immutable: false });
+const transformWithKey = _transform.convert({ cap: false });
 
 /**
  * @typedef {ModelSchema<OBJECT, Object>} ObjectModelSchema
@@ -43,22 +43,18 @@ const _transformWithKey = _transform.convert({cap: false});
  * @param {ObjectSchema} schema
  * @returns {function(Object): Object}
  */
-const transform = (getSourceProperty, getTransformer, getTargetProperty, schema) => {
+const transform = (getSourceProperty, getTransformer, getTargetProperty, schema) =>
+  source => source && transformWithKey((target, modelSchema, property) => {
+    const sourceProperty = getSourceProperty(modelSchema, property);
+    const sourceValue = _get(sourceProperty, source);
+    const transformed = getTransformer(modelSchema)(sourceValue, source, sourceProperty);
+    const targetValue = _isUndefined(transformed) ? null : transformed;
+    const targetProperty = getTargetProperty(modelSchema, property);
 
-    return source => source && _transformWithKey((target, modelSchema, property) => {
-
-        const sourceProperty = getSourceProperty(modelSchema, property);
-        const sourceValue = _get(sourceProperty, source);
-        const transformed = getTransformer(modelSchema)(sourceValue, source, sourceProperty);
-        const targetValue = _isUndefined(transformed) ? null : transformed;
-        const targetProperty = getTargetProperty(modelSchema, property);
-
-        if (targetValue !== SKIP) {
-            _setMutable(targetProperty, targetValue, target);
-        }
-
-    }, {}, schema);
-};
+    if (targetValue !== SKIP) {
+      setMutable(targetProperty, targetValue, target);
+    }
+  }, {}, schema);
 
 /**
  * @private
@@ -85,8 +81,8 @@ const getObjectProperty = (schema, property) => property;
  * @template OBJECT
  */
 export const object = schema => _assign(schema, {
-    serialize: transform(getObjectProperty, _get('serialize'), getJsonProperty, schema),
-    deserialize: transform(getJsonProperty, _get('deserialize'), getObjectProperty, schema),
+  serialize: transform(getObjectProperty, _get('serialize'), getJsonProperty, schema),
+  deserialize: transform(getJsonProperty, _get('deserialize'), getObjectProperty, schema),
 });
 
 export default object;

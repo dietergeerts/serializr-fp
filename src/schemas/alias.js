@@ -8,6 +8,6 @@ import _assign from 'lodash/fp/assign';
  * @returns {PropertySchema<OBJECT, JSON>}
  * @template OBJECT, JSON
  */
-export const alias = (property, schema) => _assign(schema, {property});
+export const alias = (property, schema) => _assign(schema, { property });
 
 export default alias;

@@ -20,7 +20,10 @@ import _omitBy from 'lodash/fp/omitBy';
  * @template OBJECT
  */
 export const omitBy = _curry((predicate, schema) => _assign(schema, {
-    serialize: _flow(schema.serialize, value => _isPlainObject(value) ? _omitBy(predicate, value) : value),
+  serialize: _flow(
+    schema.serialize,
+    value => (_isPlainObject(value) ? _omitBy(predicate, value) : value),
+  ),
 }));
 
 export default omitBy;

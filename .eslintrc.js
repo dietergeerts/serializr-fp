@@ -1,13 +1,39 @@
 module.exports = {
-    root: true,
-    env: {
-        es6: true,
-        node: true,
+  root: true,
+  env: {
+    es6: true,
+  },
+  parserOptions: {
+    ecmaVersion: 2017,
+    sourceType: 'module',
+  },
+  extends: [
+    'eslint:recommended',
+    'airbnb-base',
+  ],
+  rules: {
+    // Named exports give greater dev experience
+    // + libs are switching too, like NodeJS, RxJS, ...
+    'import/prefer-default-export': 'off',
+  },
+  overrides: [
+    // Unit tests
+    {
+      files: [
+        '**/*.test.js',
+      ],
+      env: {
         mocha: true,
+      },
     },
-    parserOptions: {
-        ecmaVersion: 6,
-        sourceType: "module",
+    // DEV Configurations
+    {
+      files: [
+        'wallaby.js',
+      ],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+      },
     },
-    extends: "eslint:recommended",
+  ],
 };
